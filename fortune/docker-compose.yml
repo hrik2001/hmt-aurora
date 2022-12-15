@@ -38,10 +38,11 @@ services:
   recording-oracle:
     build:
       context: ./recording-oracle
-    network_mode: "host"
+    ports:
+      - 3005:3005
     environment:
       ETH_PRIVATE_KEY: 486a0621e595dd7fcbe5608cbbeec8f5a8b5cabe7637f11eccfc7acd408c3a0e
-      ETH_HTTP_SERVER: https://avalanche-fuji.infura.io/v3/443a429ba8124c50bdaeb8f5240ab10d
+      ETH_HTTP_SERVER: https://avalanche-mainnet.infura.io/v3/443a429ba8124c50bdaeb8f5240ab10d
       PORT: 3005
     command: ["yarn", "start"]
 
@@ -52,7 +53,7 @@ services:
       - 3006:3006
     environment:
       ETH_PRIVATE_KEY: 657b6497a355a3982928d5515d48a84870f057c4d16923eb1d104c0afada9aa8
-      ETH_HTTP_SERVER: https://avalanche-fuji.infura.io/v3/443a429ba8124c50bdaeb8f5240ab10d
+      ETH_HTTP_SERVER: https://avalanche-mainnet.infura.io/v3/443a429ba8124c50bdaeb8f5240ab10d
       MINIO_HOST: minio
       MINIO_PORT: 9000
       MINIO_ACCESS_KEY: dev

@@ -65,9 +65,11 @@ module.exports = {
     // options below to some value.
     //
      development: {
-      host: "127.0.0.1",     // Localhost (default: none)
+      //host: "127.0.0.1",     // Localhost (default: none)
+       provider: () => new HDWalletProvider(MNEMONIC, 'http://localhost:8545'),
       port: 8545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
+      from: '0x1C3703B359B6D987D6aB9A970Df17DBA2215b523'
      },
     //
     // An additional network, but with some advanced options…
@@ -92,12 +94,22 @@ module.exports = {
 
     avalancheTestnet: {
             provider: () => new HDWalletProvider(MNEMONIC, `https://avalanche-fuji.infura.io/v3/${INFURA_TOKEN}`),
+      //provider: () => new HDWalletProvider(MNEMONIC,"https://api.avax-test.network/ext/bc/C/rpc"),
             network_id: 43113,
             confirmations: 2,
-            networkCheckTimeout: 10000,                        
-            timeoutBlocks: 200,
+            networkCheckTimeout: 10000000000000000000000000000000000000000,                        
+            timeoutBlocks: 200000,
             skipDryRun: true,
+            //from: '0x1C3703B359B6D987D6aB9A970Df17DBA2215b523'
           },//
+    avalanche: {
+      provider: () => new HDWalletProvider(MNEMONIC, `https://avalanche-mainnet.infura.io/v3/${INFURA_TOKEN}`),
+      network_id: 43113,
+      confirmations: 2,
+      networkCheckTimeout: 10000,                        
+      timeoutBlocks: 200,
+      skipDryRun: true,
+    },
     // Useful for private networks
     // private: {
     //   provider: () => new HDWalletProvider(MNEMONIC, `https://network.io`),
